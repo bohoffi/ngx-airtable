@@ -5,6 +5,8 @@
 /tmp
 */bundles
 
+demo/src/app/constants.ts
+
 # bundled
 */**/*.metadata.json
 */**/*.ngsummary.json

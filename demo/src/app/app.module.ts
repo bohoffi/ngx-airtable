@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {NgxAirtableModule} from '../../../lib/src/ngx-airtable.module';
+import {API_KEY} from './constants';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import {NgxAirtableModule} from '../../../lib/src/ngx-airtable.module';
     FormsModule,
     HttpModule,
     NgxAirtableModule.forRoot({
-      apiKey: 'keyOJjgOPGqJxNuGK',
+      apiKey: API_KEY,
       base: 'appXYMa40P0eOmznh',
       tables: {
         'authors': 'authors'
