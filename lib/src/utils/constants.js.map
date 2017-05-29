@@ -1,0 +1,1 @@
+{"version":3,"sources":["constants.ts"],"names":[],"mappings":"AAAA;;GAEG;AAFH,AAIA;;GAFG,CAEH,MAAM,CAAC,IAAM,iBAAiB,GAAG,8BAA8B,CAAC","file":"constants.js","sourceRoot":"","sourcesContent":["/**\r\n * Created by bohoffi on 29.05.2017.\r\n */\r\n\r\nexport const AIRTABLE_BASE_URL = 'https://api.airtable.com/v0/';\r\n"]}
