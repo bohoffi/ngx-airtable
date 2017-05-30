@@ -6,12 +6,10 @@ node_js:
 
 env:
   - BUILD_DIR=lib
-  - BUILD_DIR=demo
 
 before_script:
   - cd $BUILD_DIR
   - npm install
 
 script:
-  - cd $BUILD_DIR
   - npm run build
