@@ -35,3 +35,6 @@ export class NgxAirtableModule {
 }
 
 export {Airtable};
+export {Base} from './node-port/base';
+export {Table} from './node-port/table';
+export {Query} from './node-port/Query';
