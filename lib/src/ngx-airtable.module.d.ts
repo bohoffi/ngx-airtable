@@ -3,10 +3,11 @@
  */
 import { ModuleWithProviders } from '@angular/core';
 import { Airtable } from './node-port/airtable';
-export declare const COMPONENTS: never[];
-export declare const SIMPLE_PROVIDERS: typeof Airtable[];
+import { Base } from './node-port/base';
+import { Table } from './node-port/table';
+import { Query } from './node-port/query';
 export declare class NgxAirtableModule {
     static forRoot(): ModuleWithProviders;
     constructor(parentModule: NgxAirtableModule);
 }
-export { Airtable };
+export { Airtable, Base, Table, Query };
