@@ -1,1 +1,1 @@
-{"version":3,"sources":["interfaces.ts"],"names":[],"mappings":"AAAA;;GAEG","file":"interfaces.js","sourceRoot":"","sourcesContent":["/**\r\n * Created by bohoffi on 29.05.2017.\r\n */\r\n\r\nexport interface ModuleConfig {\r\n  apiKey: string;\r\n  base: string;\r\n  tables: {\r\n    [alias: string]: string;\r\n  };\r\n}\r\n"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"interfaces.js","sourceRoot":"","sourcesContent":[]}

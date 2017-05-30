@@ -1,15 +1,12 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-import { InjectionToken, ModuleWithProviders } from '@angular/core';
-import { ModuleConfig } from './interfaces';
-import { AirtableService } from './services/index';
-import { Http } from '@angular/http';
+import { ModuleWithProviders } from '@angular/core';
+import { Airtable } from './node-port/airtable';
 export declare const COMPONENTS: never[];
-export declare const ModuleConfigToken: InjectionToken<ModuleConfig>;
-export declare function provideAirTableService(moduleConfig: ModuleConfig, http: Http): AirtableService;
+export declare const SIMPLE_PROVIDERS: typeof Airtable[];
 export declare class NgxAirtableModule {
-    static forRoot(config: ModuleConfig): ModuleWithProviders;
+    static forRoot(): ModuleWithProviders;
     constructor(parentModule: NgxAirtableModule);
 }
-export { AirtableService };
+export { Airtable };

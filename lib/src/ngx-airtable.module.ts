@@ -1,19 +1,13 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-import {InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
-import {ModuleConfig} from './interfaces';
-import {AirtableService} from './services/index';
-import {Http} from '@angular/http';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
+import {Airtable} from './node-port/airtable';
+
 export const COMPONENTS = [];
-
-export const ModuleConfigToken: InjectionToken<ModuleConfig> = new InjectionToken<ModuleConfig>('moduleConfig');
-
-export function provideAirTableService(moduleConfig: ModuleConfig, http: Http): AirtableService {
-  return new AirtableService(moduleConfig, http);
-}
+export const SIMPLE_PROVIDERS = [Airtable];
 
 @NgModule({
   imports: [
@@ -24,22 +18,11 @@ export function provideAirTableService(moduleConfig: ModuleConfig, http: Http): 
 })
 export class NgxAirtableModule {
 
-  static forRoot(config: ModuleConfig): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgxAirtableModule,
       providers: [
-        {
-          provide: ModuleConfigToken,
-          useValue: config
-        },
-        {
-          provide: AirtableService,
-          useFactory: provideAirTableService,
-          deps: [
-            ModuleConfigToken,
-            Http
-          ]
-        }
+        SIMPLE_PROVIDERS
       ]
     };
   }
@@ -51,4 +34,4 @@ export class NgxAirtableModule {
   }
 }
 
-export {AirtableService};
+export {Airtable};

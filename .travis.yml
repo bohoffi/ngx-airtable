@@ -4,6 +4,8 @@ language: node_js
 node_js:
   - '6'
 
-before_script:
-- npm install
-- npm run build
+env:
+  - BUILD_DIR=lib
+  - BUILD_DIR=demo
+
+script: cd $BUILD_DIR $$ npm install && npm run build
