@@ -9,6 +9,9 @@ env:
   - BUILD_DIR=demo
 
 before_script:
-  - cd $BUILD_DIR $$ npm install
+  - cd $BUILD_DIR
+  - npm install
 
-script: cd $BUILD_DIR $$ npm run build
+script:
+  - cd $BUILD_DIR
+  - npm run build
