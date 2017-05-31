@@ -6,3 +6,5 @@
 An Angular module wrapping the Airtable API
 
 For documentation refer to the lib's [README](https://github.com/bohoffi/ngx-airtable/blob/master/lib/README.md)
+
+Or just check out the [DEMO](https://bohoffi.github.io/ngx-airtable/)
