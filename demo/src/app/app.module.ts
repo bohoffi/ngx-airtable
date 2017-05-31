@@ -3,12 +3,18 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
-import {AppComponent} from './app.component';
+import {AppComponent} from './components/app/app.component';
 import {NgxAirtableModule} from 'ngx-airtable';
+import {BugsComponent} from './components/bugs/bugs.component';
+import {MembersComponent} from './components/members/members.component';
+import {FeaturesComponent} from './components/features/features.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BugsComponent,
+    MembersComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +22,6 @@ import {NgxAirtableModule} from 'ngx-airtable';
     HttpModule,
     NgxAirtableModule.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
