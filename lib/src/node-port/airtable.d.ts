@@ -1,18 +1,12 @@
 import { Http } from '@angular/http';
 import { Base } from './base';
+import { AirtableConfiguration } from '../interfaces';
 export declare class Airtable {
     http: Http;
     private _options;
     constructor(http: Http);
-    configure(opts: {
-        apiKey: string;
-        endpointUrl?: string;
-        apiVersion?: number;
-    }): Airtable;
+    configure(opts: AirtableConfiguration): Airtable;
     base(baseId: string): Base;
-    readonly options: {
-        apiKey: string;
-        endpointUrl?: string;
-        apiVersion?: number;
-    };
+    readonly options: AirtableConfiguration;
+    private _checkConfiguration();
 }

@@ -5,23 +5,17 @@ import {RequestMethod} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 import {Base} from './base';
+import {SelectParams, TableOptions} from '../interfaces';
 import {Record} from './record';
 import {RunAction} from './runaction';
 import {Query} from './query';
-import {SelectParams} from '../interfaces';
 
 export class Table {
 
-  private _options: {
-    tableName?: string;
-    tableId?: string;
-  };
+  private _options: TableOptions;
   private _base: Base;
 
-  constructor(opts: {
-    tableName?: string;
-    tableId?: string;
-  }, base: Base) {
+  constructor(opts: TableOptions, base: Base) {
 
     if (!opts.tableName && !opts.tableId) {
       throw new Error('Table name or table ID is required');
@@ -40,6 +34,11 @@ export class Table {
     return new Record(id, this).fetch();
   }
 
+  /**
+   * Creates a new Query instance with the given parameters.
+   * @param params
+   * @returns {Query}
+   */
   select(params?: SelectParams): Query {
     if (!params) {
       params = {};

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component} from '@angular/core';
 import 'rxjs/add/operator/share';
 
-import {Airtable} from 'ngx-airtable';
+import {Airtable, Base, Query, Table} from 'ngx-airtable';
 import {API_KEY} from './constants';
 
 @Component({
@@ -11,7 +11,6 @@ import {API_KEY} from './constants';
 })
 export class AppComponent implements AfterViewInit {
 
-  title = 'app works!';
   books: any;
 
   constructor(private _at: Airtable) {
@@ -19,16 +18,14 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    const base = this._at.configure({
-      apiKey: API_KEY,
-      endpointUrl: 'https://api.airtable.com',
-      apiVersion: 0
+    const base: Base = this._at.configure({
+      apiKey: API_KEY
     }).base('appXYMa40P0eOmznh');
-    const table = base.table({
+    const table: Table = base.table({
       tableName: 'books',
       tableId: 'tbl3a0KcbCkY8FK9P'
     });
-    this.books = table
+    const query: Query = table
       .select({
         sort: [
           {
@@ -36,7 +33,7 @@ export class AppComponent implements AfterViewInit {
             direction: 'asc'
           }
         ]
-      })
-      .all().share();
+      });
+    this.books = query.all().share();
   }
 }

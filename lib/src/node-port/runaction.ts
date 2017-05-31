@@ -1,38 +1,22 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {Http, RequestMethod, Response} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import {Base} from './base';
+import {RunActionOptions} from '../interfaces';
 
 export class RunAction {
 
-  private _options: {
-    base: Base;
-    method: RequestMethod;
-    path: string;
-    params?: string | URLSearchParams | {
-      [key: string]: any | any[];
-    } | null;
-    body?: any;
-  };
+  private _options: RunActionOptions;
   private _http: Http;
   private _endpointUrl: string | undefined;
   private _apiVersion: number | undefined;
   private _baseId: string;
   private _path: string;
 
-  constructor(opts: {
-    base: Base;
-    method: RequestMethod;
-    path: string;
-    params?: string | URLSearchParams | {
-      [key: string]: any | any[];
-    } | null;
-    body?: any;
-  }) {
+  constructor(opts: RunActionOptions) {
     this._options = opts;
 
     this._http = this._options.base.airtable.http;

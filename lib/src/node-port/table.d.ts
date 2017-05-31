@@ -1,20 +1,22 @@
 import { Observable } from 'rxjs/Observable';
 import { Base } from './base';
+import { SelectParams, TableOptions } from '../interfaces';
 import { Query } from './query';
-import { SelectParams } from '../interfaces';
 export declare class Table {
     private _options;
     private _base;
-    constructor(opts: {
-        tableName?: string;
-        tableId?: string;
-    }, base: Base);
+    constructor(opts: TableOptions, base: Base);
     /**
      * Returns the record defined by the given id.
      * @param id
      * @returns {Observable<any>}
      */
     find(id: string): Observable<any>;
+    /**
+     * Creates a new Query instance with the given parameters.
+     * @param params
+     * @returns {Query}
+     */
     select(params?: SelectParams): Query;
     /**
      * Creates a new record with the given data.

@@ -1,12 +1,11 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {SelectParams} from '../interfaces';
-import {SortDirection} from '../types';
+import {Params, SelectParams, SortParam} from '../interfaces';
 
-export const normalizeQueryParams = (params: SelectParams, additional?: { [key: string]: any; }): { [key: string]: any; } => {
+export const normalizeQueryParams = (params: SelectParams, additional?: Params): Params => {
 
-  const normalizedParams: any = {};
+  const normalizedParams: Params = {};
 
   if (!!params.fields) {
     params.fields.forEach((fieldName: string, index: number) => {
@@ -27,7 +26,7 @@ export const normalizeQueryParams = (params: SelectParams, additional?: { [key: 
   }
 
   if (!!params.sort) {
-    params.sort.forEach((sort: { field: string; direction: SortDirection }, index: number) => {
+    params.sort.forEach((sort: SortParam, index: number) => {
       normalizedParams[`sort[${index}][field]`] = sort.field;
       normalizedParams[`sort[${index}][direction]`] = sort.direction;
     });

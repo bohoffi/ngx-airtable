@@ -12,7 +12,7 @@ export declare class Query {
     constructor(params: SelectParams, table: Table);
     firstPage(): Observable<any>;
     eachPage(): Observable<any>;
-    private _eachPage(offset?, previous?);
     all(): Observable<any>;
+    private _eachPage(offset?, previous?);
     private _all(offset?, previous?);
 }

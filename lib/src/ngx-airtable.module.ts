@@ -4,10 +4,9 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {Airtable} from './node-port/airtable';
-import {Base} from './node-port/base';
-import {Table} from './node-port/table';
-import {Query} from './node-port/query';
+import {SelectParams} from './interfaces';
+import {Airtable, Base, Query, Table} from './node-port/index';
+import {SortDirection} from './types';
 
 const SIMPLE_PROVIDERS = [Airtable];
 
@@ -36,5 +35,5 @@ export class NgxAirtableModule {
   }
 }
 
-export {Airtable, Base, Table, Query};
+export {Airtable, Base, Table, Query, SelectParams, SortDirection};
 

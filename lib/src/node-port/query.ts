@@ -16,9 +16,7 @@ import {normalizeQueryParams} from './utils';
 
 export class Query {
 
-  private _params: {
-    [key: string]: any;
-  };
+  private _params: SelectParams;
   private _table: Table;
 
   constructor(params: SelectParams, table: Table) {
@@ -40,6 +38,10 @@ export class Query {
 
   eachPage(): Observable<any> {
     return this._eachPage();
+  }
+
+  all(): Observable<any> {
+    return this._all();
   }
 
   private _eachPage(offset?: string, previous?: Observable<any>): Observable<any> {
@@ -70,10 +72,6 @@ export class Query {
           return items$.merge(next$);
         })
     );
-  }
-
-  all() {
-    return this._all();
   }
 
   private _all(offset?: string, previous?: any[]): Observable<any> {
