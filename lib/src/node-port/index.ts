@@ -6,3 +6,4 @@ export {Base} from './base';
 export {Query} from './query';
 export {RunAction} from './runaction';
 export {Table} from './table';
+export {_airtableFactory} from './utils';

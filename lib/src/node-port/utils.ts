@@ -1,7 +1,14 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {Params, SelectParams, SortParam} from '../interfaces';
+import {Http} from '@angular/http';
+
+import {Airtable} from './airtable';
+import {AirtableConfiguration, Params, SelectParams, SortParam} from '../interfaces';
+
+export function _airtableFactory(http: Http, config?: AirtableConfiguration): Airtable {
+  return new Airtable(http, config);
+}
 
 export const normalizeQueryParams = (params: SelectParams, additional?: Params): Params => {
 

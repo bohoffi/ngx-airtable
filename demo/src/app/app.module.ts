@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {NgxAirtableModule} from 'ngx-airtable';
+import {API_KEY} from './constants';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import {NgxAirtableModule} from 'ngx-airtable';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgxAirtableModule.forRoot()
+    NgxAirtableModule.forRoot({
+      apiKey: API_KEY
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

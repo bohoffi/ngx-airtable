@@ -18,9 +18,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    const base: Base = this._at.configure({
-      apiKey: API_KEY
-    }).base('appXYMa40P0eOmznh');
+    const base: Base = this._at.base('appXYMa40P0eOmznh');
     const table: Table = base.table({
       tableName: 'books',
       tableId: 'tbl3a0KcbCkY8FK9P'

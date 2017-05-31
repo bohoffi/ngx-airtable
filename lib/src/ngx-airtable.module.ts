@@ -1,29 +1,38 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Http} from '@angular/http';
 
-import {SelectParams} from './interfaces';
-import {Airtable, Base, Query, Table} from './node-port/index';
+import {AirtableConfiguration, SelectParams} from './interfaces';
+import {_airtableFactory, Airtable, Base, Query, Table} from './node-port/index';
 import {SortDirection} from './types';
 
-const SIMPLE_PROVIDERS = [Airtable];
+const AirtableConfigToken: InjectionToken<AirtableConfiguration> = new InjectionToken<AirtableConfiguration>('globalConfiguration');
+
+export const AirtableProvider = {
+  provide: Airtable,
+  useFactory: _airtableFactory,
+  deps: [Http, AirtableConfigToken]
+};
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [],
-  exports: []
+  providers: [AirtableProvider]
 })
 export class NgxAirtableModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(config?: AirtableConfiguration): ModuleWithProviders {
     return {
       ngModule: NgxAirtableModule,
       providers: [
-        SIMPLE_PROVIDERS
+        {
+          provide: AirtableConfigToken,
+          useValue: config
+        }
       ]
     };
   }
