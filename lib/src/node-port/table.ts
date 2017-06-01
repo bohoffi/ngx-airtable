@@ -12,8 +12,8 @@ import {Query} from './query';
 
 export class Table {
 
-  private _options: TableOptions;
-  private _base: Base;
+  protected _options: TableOptions;
+  protected _base: Base;
 
   constructor(opts: TableOptions, base: Base) {
 
@@ -92,6 +92,10 @@ export class Table {
    */
   replace(id: string, entityData: any): Observable<any> {
     return new Record(id, this).putUpdate(entityData);
+  }
+
+  get options(): TableOptions {
+    return this._options;
   }
 
   get base(): Base {
