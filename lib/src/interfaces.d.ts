@@ -37,3 +37,8 @@ export interface SortParam {
     field: string;
     direction: SortDirection;
 }
+export interface Link {
+    target: TableOptions;
+    linkSelector: string;
+    linkFilter: (record: any) => string;
+}

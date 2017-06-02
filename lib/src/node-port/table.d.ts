@@ -3,8 +3,8 @@ import { Base } from './base';
 import { SelectParams, TableOptions } from '../interfaces';
 import { Query } from './query';
 export declare class Table {
-    private _options;
-    private _base;
+    protected _options: TableOptions;
+    protected _base: Base;
     constructor(opts: TableOptions, base: Base);
     /**
      * Returns the record defined by the given id.
@@ -44,6 +44,7 @@ export declare class Table {
      * @returns {Observable<any>}
      */
     replace(id: string, entityData: any): Observable<any>;
+    readonly options: TableOptions;
     readonly base: Base;
     readonly urlEncodedNameOrId: string;
 }

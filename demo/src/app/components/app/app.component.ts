@@ -1,9 +1,9 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/share';
 
-import {Airtable, Base, Table} from 'ngx-airtable';
+import {Airtable, Base, LinkedTable, Table} from 'ngx-airtable';
 import {API_KEY} from '../../utils/constants';
 
 @Component({
@@ -16,10 +16,12 @@ export class AppComponent implements AfterViewInit {
   bugs: Observable<any>;
   members: Observable<any>;
   features: Observable<any>;
+  bugsWithFeatures: Observable<any>;
 
   private _bugIssueTable: Table;
   private _teamMemberTable: Table;
   private _featureTable: Table;
+  private _linkedBugToFeaturesTable: LinkedTable;
 
   constructor(private _airtable: Airtable) {
     this._initAirtable();
@@ -43,26 +45,35 @@ export class AppComponent implements AfterViewInit {
     this._featureTable = base.table({
       tableId: 'tbl20P6rSvZVdm7L7'
     });
+    this._linkedBugToFeaturesTable = LinkedTable.fromTable(
+      this._bugIssueTable,
+      [
+        {
+          target: this._featureTable.options,
+          linkFilter: record => `OR(${record['fields']['Associated Features'].map(af => `RECORD_ID()='${af}'`).join(',')})`,
+          linkSelector: 'features'
+        }
+      ]
+    );
   }
 
   private _fetchData(): void {
     this.bugs = this._bugIssueTable
       .select({maxRecords: 10})
       .firstPage()
-      .map(res => res.records)
-      .do(res => console.log('bugs: ', res))
       .share();
     this.members = this._teamMemberTable
       .select({maxRecords: 10})
       .firstPage()
-      .map(res => res.records)
-      .do(res => console.log('members: ', res))
       .share();
     this.features = this._featureTable
       .select({maxRecords: 10})
       .firstPage()
-      .map(res => res.records)
-      .do(res => console.log('features: ', res))
+      .share();
+
+    this.bugsWithFeatures = this._linkedBugToFeaturesTable
+      .select({maxRecords: 10})
+      .firstPage()
       .share();
   }
 }
