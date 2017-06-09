@@ -31,7 +31,8 @@
     "bundling": "rollup -c ../rollup.config.js",
     "minify": "uglifyjs bundles/ngx-airtable.umd.js --screw-ie8 --compress --mangle --comments --output bundles/ngx-airtable.umd.min.js",
     "build": "npm run cleanup && ngc && npm run bundling && npm run minify",
-    "prepublish": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {

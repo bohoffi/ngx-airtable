@@ -33,7 +33,8 @@ export class Query {
         api_key: this._table.base.airtable.options.apiKey
       })
     })
-      .perform();
+      .perform()
+      .map(result => result.records);
   }
 
   eachPage(): Observable<any> {

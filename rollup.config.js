@@ -15,5 +15,18 @@ export default {
         'rxjs/Subscription': 'Rx',
         'rxjs/add/observable/fromEvent': 'Rx.Observable.prototype',
         'rxjs/add/observable/debounceTime': 'Rx.Observable.prototype'
-    }
+    },
+    external: [
+        '@angular/core',
+        '@angular/common',
+        '@angular/http',
+        'rxjs/Observable',
+        'rxjs/add/observable/defer',
+        'rxjs/add/observable/empty',
+        'rxjs/add/observable/of',
+        'rxjs/add/operator/filter',
+        'rxjs/add/operator/map',
+        'rxjs/add/operator/mergeMap',
+        'rxjs/add/operator/merge',
+    ]
 }

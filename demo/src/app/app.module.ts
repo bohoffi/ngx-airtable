@@ -9,16 +9,21 @@ import {NgxAirtableModule} from 'ngx-airtable';
 import {BugsComponent} from './components/bugs/bugs.component';
 import {MembersComponent} from './components/members/members.component';
 import {FeaturesComponent} from './components/features/features.component';
+<<<<<<< HEAD
 =======
 import {API_KEY} from './constants';
 >>>>>>> global-config
+=======
+import { LinkedTableComponent } from './components/linked-table/linked-table.component';
+>>>>>>> origin/linked-queries
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
     MembersComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    LinkedTableComponent
   ],
   imports: [
     BrowserModule,
