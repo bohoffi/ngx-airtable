@@ -5,17 +5,11 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './components/app/app.component';
 import {NgxAirtableModule} from 'ngx-airtable';
-<<<<<<< HEAD
 import {BugsComponent} from './components/bugs/bugs.component';
 import {MembersComponent} from './components/members/members.component';
 import {FeaturesComponent} from './components/features/features.component';
-<<<<<<< HEAD
-=======
-import {API_KEY} from './constants';
->>>>>>> global-config
-=======
+import {API_KEY} from './utils/constants';
 import { LinkedTableComponent } from './components/linked-table/linked-table.component';
->>>>>>> origin/linked-queries
 
 @NgModule({
   declarations: [

@@ -4,7 +4,6 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/share';
 
 import {Airtable, Base, LinkedTable, Table} from 'ngx-airtable';
-import {API_KEY} from '../../utils/constants';
 
 @Component({
   selector: 'app-root',
@@ -32,9 +31,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   private _initAirtable(): void {
-    const base: Base = this._airtable.configure({
-      apiKey: API_KEY
-    }).base('appFVQvT927XPWPTq');
+    const base: Base = this._airtable
+      .base('appFVQvT927XPWPTq');
 
     this._bugIssueTable = base.table({
       tableId: 'tbla1d3aqDtQqprQs'
