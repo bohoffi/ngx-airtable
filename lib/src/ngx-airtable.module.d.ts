@@ -1,14 +1,9 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-<<<<<<< HEAD
 import { InjectionToken, ModuleWithProviders } from '@angular/core';
 import { Http } from '@angular/http';
-import { AirtableConfiguration, SelectParams } from './interfaces';
-=======
-import { ModuleWithProviders } from '@angular/core';
-import { SelectParams, Link } from './interfaces';
->>>>>>> origin/linked-queries
+import { AirtableConfiguration, SelectParams, Link } from './interfaces';
 import { Airtable, Base, Query, Table } from './node-port/index';
 import { LinkedTable, LinkedQuery } from './reactive/index';
 import { SortDirection } from './types';

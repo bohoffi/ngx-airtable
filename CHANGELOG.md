@@ -1,3 +1,8 @@
+# v2.0.0
+### Features
+* Global config
+* Linked queries
+
 # v1.0.1
 #### Refactorings
 * refactored object literal types to interfaces

@@ -5,14 +5,9 @@ import {InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf} from 
 import {CommonModule} from '@angular/common';
 import {Http} from '@angular/http';
 
-<<<<<<< HEAD
-import {AirtableConfiguration, SelectParams} from './interfaces';
+import {AirtableConfiguration, SelectParams, Link} from './interfaces';
 import {_airtableFactory, Airtable, Base, Query, Table} from './node-port/index';
-=======
-import {SelectParams, Link} from './interfaces';
-import {Airtable, Base, Query, Table} from './node-port/index';
 import {LinkedTable, LinkedQuery} from './reactive/index';
->>>>>>> origin/linked-queries
 import {SortDirection} from './types';
 
 const AirtableConfigToken: InjectionToken<AirtableConfiguration> = new InjectionToken<AirtableConfiguration>('globalConfiguration');

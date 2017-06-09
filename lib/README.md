@@ -11,12 +11,9 @@ An Angular module wrapping the Airtable API
   * [Base](#base)
   * [Table](#table)
   * [Query](#query)
-<<<<<<< HEAD
   * [AirtableConfiguration](#airtableconfiguration)
-=======
   * [LinkedTable](#linkedtable)
   * [LinkedQuery](#linkedquery)
->>>>>>> origin/linked-queries
   * [SelectParams](#selectparams)
   * [SortParam](#sortparam)
   * [SortDirection](#sortdirection)
@@ -64,7 +61,6 @@ This module is providing the same functionality as the official Airtable JavaScr
 
 ### Airtable (Service)
 #### Methods
-<<<<<<< HEAD
 - `configure(opts: AirtableConfiguration): Airtable`: provides the configuration or overrides the global configuration used to connect to the Airtable API
 - `base(baseId: string): Base`: creates a new Base instance identified by id
 
@@ -73,18 +69,7 @@ This module is providing the same functionality as the official Airtable JavaScr
 
 ### Base
 #### Methods
-- `table(tableOpts: TableOptions): Table`: creates a new Table instance identified by name or id
-=======
-- `configure(opts): Airtable`: provides the configuration used to connect to the Airtable API
-- `base(baseId: string): Base`: creates a new Base instance identified by id
-
-#### Properties
-- `options: any`: provides an accessor for the options object passed to the configure method
-
-### Base
-#### Methods
 - `table(tableOpts: {tableName?: string; tableId?: string;}): Table`: creates a new Table instance identified by name or id
->>>>>>> origin/linked-queries
 
 #### Properties
 - `baseId: string`: provides an accessor for the Base's id
@@ -109,13 +94,11 @@ This module is providing the same functionality as the official Airtable JavaScr
 - `eachPage(): Observable<any>`: fetches each page (all records __but__ each page is emitted separately)
 - `all(): Observable<any>`: fetches all pages and emits all records at once
 
-<<<<<<< HEAD
 ### AirtableConfiguration
 - `apiKey?: string`: provides the API key to access Airtable
 - `endpointUrl?: string`: the API endpoint to hit. You might want to override it if you are using an API proxy (e.g. runscope.net) to debug your API calls
 - `apiVersion?: number`: the API version
 
-=======
 ### LinkedTable
 _Extends Table_
 
@@ -137,7 +120,6 @@ Take a look at the [DEMO](https://bohoffi.github.io/ngx-airtable/).
 - `eachPage(): Observable<any>`: fetches each page (all records __but__ each page is emitted separately) with its related entities
 - `all(): Observable<any>`: fetches all pages and emits all records at once with its related entities
 
->>>>>>> origin/linked-queries
 ### SelectParams
 - `fields?: string[]`: limits the fetched fields per record
 - `filterByFormula?: string`: a [formula](https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference) used to filter the records
@@ -146,12 +128,9 @@ Take a look at the [DEMO](https://bohoffi.github.io/ngx-airtable/).
 - `sort?: SortParam[]`: specifying sorting rules by field and direction
 - `view?: string`: the name or id of the view to fetch
 
-<<<<<<< HEAD
 ### SortParam
 - `field: string`: the name of the field to sort
 - `direction: SortDirection`: the direction to sort
 
-=======
->>>>>>> origin/linked-queries
 ### SortDirection
 - `type SortDirection = 'asc' | 'desc'`
