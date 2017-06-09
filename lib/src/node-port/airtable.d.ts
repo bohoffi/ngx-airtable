@@ -4,7 +4,7 @@ import { AirtableConfiguration } from '../interfaces';
 export declare class Airtable {
     http: Http;
     private _options;
-    constructor(http: Http);
+    constructor(http: Http, _config?: AirtableConfiguration);
     configure(opts: AirtableConfiguration): Airtable;
     base(baseId: string): Base;
     readonly options: AirtableConfiguration;

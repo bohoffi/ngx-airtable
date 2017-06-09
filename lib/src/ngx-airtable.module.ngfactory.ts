@@ -9,16 +9,24 @@
 import * as import0 from '@angular/core';
 import * as import1 from './ngx-airtable.module';
 import * as import2 from '@angular/common';
+import * as import3 from './node-port/utils';
+import * as import4 from '@angular/http';
+import * as import5 from './node-port/airtable';
 class NgxAirtableModuleInjector extends import0.ɵNgModuleInjector<import1.NgxAirtableModule> {
   _CommonModule_0:import2.CommonModule;
   _NgxAirtableModule_1:import1.NgxAirtableModule;
   __NgLocalization_2:import2.NgLocaleLocalization;
+  __Airtable_3:any;
   constructor(parent:import0.Injector) {
     super(parent,([] as any[]),([] as any[]));
   }
   get _NgLocalization_2():import2.NgLocaleLocalization {
     if ((this.__NgLocalization_2 == null)) { (this.__NgLocalization_2 = new import2.NgLocaleLocalization(this.parent.get(import0.LOCALE_ID))); }
     return this.__NgLocalization_2;
+  }
+  get _Airtable_3():any {
+    if ((this.__Airtable_3 == null)) { (this.__Airtable_3 = import3._airtableFactory(this.parent.get(import4.Http),this.parent.get(import1.AirtableProvider))); }
+    return this.__Airtable_3;
   }
   createInternal():import1.NgxAirtableModule {
     this._CommonModule_0 = new import2.CommonModule();
@@ -29,10 +37,11 @@ class NgxAirtableModuleInjector extends import0.ɵNgModuleInjector<import1.NgxAi
     if ((token === import2.CommonModule)) { return this._CommonModule_0; }
     if ((token === import1.NgxAirtableModule)) { return this._NgxAirtableModule_1; }
     if ((token === import2.NgLocalization)) { return this._NgLocalization_2; }
+    if ((token === import5.Airtable)) { return this._Airtable_3; }
     return notFoundResult;
   }
   destroyInternal():void {
   }
 }
 export const NgxAirtableModuleNgFactory:import0.NgModuleFactory<import1.NgxAirtableModule> = new import0.NgModuleFactory<any>(NgxAirtableModuleInjector,import1.NgxAirtableModule);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovV2ViU3Rvcm1zL25neC1haXJ0YWJsZS9saWIvc3JjL25neC1haXJ0YWJsZS5tb2R1bGUubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vQzovV2ViU3Rvcm1zL25neC1haXJ0YWJsZS9saWIvc3JjL25neC1haXJ0YWJsZS5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiICJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovV2ViU3Rvcm1zL25neC1haXJ0YWJsZS9saWIvc3JjL25neC1haXJ0YWJsZS5tb2R1bGUubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vQzovV2ViU3Rvcm1zL25neC1haXJ0YWJsZS9saWIvc3JjL25neC1haXJ0YWJsZS5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiICJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==

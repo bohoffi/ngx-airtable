@@ -17,8 +17,9 @@ export class Airtable {
 
   private _options: AirtableConfiguration;
 
-  constructor(public http: Http) {
-    this._options = defaultOptions;
+  constructor(public http: Http,
+              _config?: AirtableConfiguration) {
+    this._options = Object.assign(defaultOptions, _config);
   }
 
   configure(opts: AirtableConfiguration): Airtable {

@@ -5,9 +5,12 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './components/app/app.component';
 import {NgxAirtableModule} from 'ngx-airtable';
+<<<<<<< HEAD
 import {BugsComponent} from './components/bugs/bugs.component';
 import {MembersComponent} from './components/members/members.component';
 import {FeaturesComponent} from './components/features/features.component';
+=======
+>>>>>>> global-config
 
 @NgModule({
   declarations: [
