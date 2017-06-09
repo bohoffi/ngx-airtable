@@ -9,6 +9,9 @@ import {Http} from '@angular/http';
 import {AirtableConfiguration, SelectParams} from './interfaces';
 import {_airtableFactory, Airtable, Base, Query, Table} from './node-port/index';
 =======
+import {SelectParams, Link} from './interfaces';
+import {Airtable, Base, Query, Table} from './node-port/index';
+import {LinkedTable, LinkedQuery} from './reactive/index';
 >>>>>>> origin/linked-queries
 import {SortDirection} from './types';
 
@@ -48,4 +51,5 @@ export class NgxAirtableModule {
 }
 
 export {Airtable, Base, Table, Query, SelectParams, SortDirection};
+export {LinkedTable, LinkedQuery, Link};
 

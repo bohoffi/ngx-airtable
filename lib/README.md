@@ -1,5 +1,4 @@
 # ngx-airtable
-
 [![npm version](https://badge.fury.io/js/ngx-airtable.svg)](https://badge.fury.io/js/ngx-airtable)
 [![Build Status](https://travis-ci.org/bohoffi/ngx-airtable.svg?branch=master)](https://travis-ci.org/bohoffi/ngx-airtable)
 
@@ -15,6 +14,8 @@ An Angular module wrapping the Airtable API
 <<<<<<< HEAD
   * [AirtableConfiguration](#airtableconfiguration)
 =======
+  * [LinkedTable](#linkedtable)
+  * [LinkedQuery](#linkedquery)
 >>>>>>> origin/linked-queries
   * [SelectParams](#selectparams)
   * [SortParam](#sortparam)
@@ -59,7 +60,6 @@ The endpoint url and the api version are provided with the following default val
 If you want to you can overwrite them (either globally or by usage (using `configure()`).
 
 ## API
-
 This module is providing the same functionality as the official Airtable JavaScript Library [airtable.js](https://github.com/Airtable/airtable.js) as of v0.5.0.
 
 ### Airtable (Service)
@@ -75,6 +75,15 @@ This module is providing the same functionality as the official Airtable JavaScr
 #### Methods
 - `table(tableOpts: TableOptions): Table`: creates a new Table instance identified by name or id
 =======
+- `configure(opts): Airtable`: provides the configuration used to connect to the Airtable API
+- `base(baseId: string): Base`: creates a new Base instance identified by id
+
+#### Properties
+- `options: any`: provides an accessor for the options object passed to the configure method
+
+### Base
+#### Methods
+- `table(tableOpts: {tableName?: string; tableId?: string;}): Table`: creates a new Table instance identified by name or id
 >>>>>>> origin/linked-queries
 
 #### Properties
@@ -107,6 +116,27 @@ This module is providing the same functionality as the official Airtable JavaScr
 - `apiVersion?: number`: the API version
 
 =======
+### LinkedTable
+_Extends Table_
+
+The `LinkedTable` does the same - according to data fetching - as the `Table` __but__ it can handle entity relations while fetching.
+Take a look at the [DEMO](https://bohoffi.github.io/ngx-airtable/).
+What the `LinkedTable`is __not__ capable of are entity modifications - create, update, delete.
+#### Methods
+- `static fromTable(origin: Table, links: Link[]): LinkedTable`: creates a new LinkedTable instance using the provided origin Table and the given links
+- `find(id: string): Observable<any>`: fetches a record identified by id with its related entities
+- `select(params?: SelectParams): LinkedQuery`: creates a new LinkedQuery instance with the given parameters
+ 
+### LinkedQuery
+_Extends Query_
+
+The `LinkedQuery` does the same - according to data fetching - as the `Query` __but__ it can handle entity relations while fetching.
+Take a look at the [DEMO](https://bohoffi.github.io/ngx-airtable/).
+#### Methods
+- `firstPage(): Observable<any>`: fetches the first page (if `pageSize` is omitted => max. 100 records) with its related entities
+- `eachPage(): Observable<any>`: fetches each page (all records __but__ each page is emitted separately) with its related entities
+- `all(): Observable<any>`: fetches all pages and emits all records at once with its related entities
+
 >>>>>>> origin/linked-queries
 ### SelectParams
 - `fields?: string[]`: limits the fetched fields per record
