@@ -7,9 +7,18 @@ node_js:
 env:
   - BUILD_DIR=lib
 
+before_install:
+  - npm install -g npm
+  - npm install -g greenkeeper-lockfile@1
+
+install: npm install
+
 before_script:
   - cd $BUILD_DIR
+  - greenkeeper-lockfile-update
   - npm install
 
 script:
   - npm run build
+
+after_script: greenkeeper-lockfile-upload
