@@ -10,6 +10,7 @@ import {BugsComponent} from './components/bugs/bugs.component';
 import {MembersComponent} from './components/members/members.component';
 import {FeaturesComponent} from './components/features/features.component';
 =======
+import {API_KEY} from './constants';
 >>>>>>> global-config
 
 @NgModule({
@@ -23,7 +24,9 @@ import {FeaturesComponent} from './components/features/features.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgxAirtableModule.forRoot()
+    NgxAirtableModule.forRoot({
+      apiKey: API_KEY
+    })
   ],
   bootstrap: [AppComponent]
 })
