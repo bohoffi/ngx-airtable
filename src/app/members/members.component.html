@@ -1,0 +1,16 @@
+<h3>
+  <a href="https://airtable.com/tblZ5GpVzfAvhw2aw/viwDVfYylfvyj70Q7" target="_blank">Team Members</a>
+</h3>
+<pre>
+  <code>
+    <span class="keyword">this</span>.<span class="var">members</span> = <span class="keyword">this</span>.<span class="var">_teamMemberTable</span>
+      .<span class="method">select</span>(&#123;<span class="var">maxRecords</span>: 10&#125;)
+      .<span class="method">firstPage</span>()
+      .<span class="var">share</span>();
+  </code>
+</pre>
+<ul>
+  <ng-container *ngFor="let member of members">
+    <li>{{member.fields.Name}}</li>
+  </ng-container>
+</ul>

@@ -1,1 +1,0 @@
-{"version":3,"sources":["types.ts"],"names":[],"mappings":"AAAA;;GAEG","file":"types.js","sourceRoot":"","sourcesContent":["/**\r\n * Created by bohoffi on 30.05.2017.\r\n */\r\n\r\nexport type SortDirection = 'asc' | 'desc';\r\n"]}

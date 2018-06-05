@@ -1,0 +1,31 @@
+pre {
+  background-color: black;
+
+  code {
+    color: white;
+
+    .keyword {
+      color: #e08d00;
+    }
+    .var {
+      color: mediumpurple;
+    }
+    .method {
+      color: gold;
+    }
+    .string {
+      color: green;
+    }
+  }
+}
+
+mat-card {
+  margin: 0.5em;
+}
+
+#app-container {
+  margin: 0.5em;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+}

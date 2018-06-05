@@ -1,0 +1,31 @@
+{
+  "name": "ngx-airtable",
+  "description": "An Angular module wrapping the Airtable API",
+  "version": "3.0.0",
+  "homepage": "https://github.com/bohoffi/ngx-airtable",
+  "author": {
+    "name": "bohoffi",
+    "url": "http://github.com/bohoffi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bohoffi/ngx-airtable.git"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "ng",
+    "ngx",
+    "angular",
+    "library",
+    "airtable",
+    "API",
+    "wrapper"
+  ],
+  "bugs": {
+    "url": "https://github.com/bohoffi/ngx-airtable/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  }
+}
