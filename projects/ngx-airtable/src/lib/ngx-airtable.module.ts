@@ -3,12 +3,13 @@ import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 
 import {AirtableConfiguration} from './interfaces';
 import {AirtableConfigToken} from './token';
-import {Airtable} from './node-port/airtable';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
 })
 export class NgxAirtableModule {
@@ -16,7 +17,6 @@ export class NgxAirtableModule {
     return {
       ngModule: NgxAirtableModule,
       providers: [
-        Airtable,
         {
           provide: AirtableConfigToken,
           useValue: config

@@ -1,15 +1,15 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SelectParams, TableOptions } from '../interfaces';
+import { Base } from './base';
+import { Query } from './query';
+import { Record } from './record';
+import { RunAction } from './runaction';
+import { normalizeQueryParams } from './utils';
 
-import {Base} from './base';
-import {SelectParams, TableOptions} from '../interfaces';
-import {Record} from './record';
-import {RunAction} from './runaction';
-import {Query} from './query';
-import {normalizeQueryParams} from './utils';
 
 export class Table {
 

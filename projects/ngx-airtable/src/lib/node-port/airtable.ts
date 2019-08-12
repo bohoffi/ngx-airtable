@@ -13,20 +13,15 @@ const defaultOptions: AirtableConfiguration = {
   apiVersion: 0
 };
 
-export function _airtableFactory(http: HttpClient, config?: AirtableConfiguration): Airtable {
-  return new Airtable(http, config);
-}
-
 @Injectable({
-  providedIn: 'root',
-  useFactory: _airtableFactory
+  providedIn: 'root'
 })
 export class Airtable {
 
   private _options: AirtableConfiguration;
 
   constructor(public http: HttpClient,
-              @Inject(AirtableConfigToken) _config?: AirtableConfiguration) {
+              @Inject(AirtableConfigToken) _config: AirtableConfiguration) {
     this._options = Object.assign(defaultOptions, _config);
   }
 

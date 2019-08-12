@@ -17,12 +17,6 @@
       "dom"
     ],
     "paths": {
-      "ngx-airtable": [
-        "dist/ngx-airtable"
-      ],
-      "ngx-airtable/*": [
-        "dist/ngx-airtable/*"
-      ]
     }
   }
 }

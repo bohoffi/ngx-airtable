@@ -1,11 +1,7 @@
+import { Table, LinkedTable, Airtable, Base } from 'ngx-airtable';
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-
-import {LinkedTable} from '../../projects/ngx-airtable/src/lib/reactive/LinkedTable';
-import {Table} from '../../projects/ngx-airtable/src/lib/node-port/table';
 import {share} from 'rxjs/operators';
-import {Base} from '../../projects/ngx-airtable/src/lib/node-port/base';
-import {Airtable} from '../../projects/ngx-airtable/src/lib/node-port/airtable';
 
 @Component({
   selector: 'app-root',
