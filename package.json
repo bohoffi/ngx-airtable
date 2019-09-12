@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --progress false",
     "build": "ng build --prod",
     "build:lib:prod": "ng build ngx-airtable",
     "build:docs": "ng build --prod --output-path docs --base-href ngx-airtable",
