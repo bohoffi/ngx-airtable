@@ -1,13 +1,11 @@
-/**
- * Created by bohoffi on 30.05.2017.
- */
+
 import {HttpParams} from '@angular/common/http';
 
 import {Params, SelectParams, SortParam} from '../interfaces';
 
 export const normalizeQueryParams = (params?: SelectParams, additional?: Params): HttpParams => {
 
-  const normalizedParams: HttpParams = new HttpParams();
+  const normalizedParams: any = {};
 
   if (!!params) {
     if (!!params.fields) {
@@ -21,11 +19,11 @@ export const normalizeQueryParams = (params?: SelectParams, additional?: Params)
     }
 
     if (!!params.maxRecords) {
-      normalizedParams['maxRecords'] = params.maxRecords;
+      normalizedParams['maxRecords'] = `${params.maxRecords}`;
     }
 
     if (!!params.pageSize) {
-      normalizedParams['pageSize'] = params.pageSize;
+      normalizedParams['pageSize'] = `${params.pageSize}`;
     }
 
     if (!!params.sort) {
@@ -46,5 +44,7 @@ export const normalizeQueryParams = (params?: SelectParams, additional?: Params)
     });
   }
 
-  return normalizedParams;
+  return new HttpParams({
+    fromObject: normalizedParams
+  });
 };
