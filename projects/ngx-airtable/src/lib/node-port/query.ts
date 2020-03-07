@@ -1,14 +1,9 @@
-/**
- * Created by bohoffi on 30.05.2017.
- */
-import {Observable, defer, of, EMPTY, merge, concat} from 'rxjs';
-import {flatMap, map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
-import {SelectParams} from '../interfaces';
-import {RunAction} from './runaction';
-import {Table} from './table';
-import {normalizeQueryParams} from './utils';
-import {HttpHeaders} from '@angular/common/http';
+import { SelectParams } from '../interfaces';
+import { RunAction } from './runaction';
+import { Table } from './table';
+import { normalizeQueryParams } from './utils';
 
 export class Query {
 
@@ -20,15 +15,16 @@ export class Query {
     this._table = table;
   }
 
-  firstPage(): Observable<any> {
+  // firstPage(): Observable<any> {
+  firstPage(): RunAction {
     return new RunAction({
-      base: this._table.base,
+      base: null,
+      // base: this._table.base,
       method: 'GET',
       path: this._table.urlEncodedNameOrId,
-      params: normalizeQueryParams(this._params),
-      headers: new HttpHeaders({authorization: `Bearer ${this._table.base.airtable.options.apiKey}`})
+      params: normalizeQueryParams(this._params)
     })
-      .perform()
+      // .perform()
       .pipe(
         map(result => {
           return result.records;
@@ -36,73 +32,76 @@ export class Query {
       );
   }
 
-  eachPage(): Observable<any> {
-    return this._eachPage();
-  }
+  // eachPage(): RunAction {
+  // // eachPage(): Observable<any> {
+  //   return this._eachPage();
+  // }
 
-  all(): Observable<any> {
-    return this._all();
-  }
+  // all(): Observable<any> {
+  //   return this._all();
+  // }
 
-  private _eachPage(offset?: string, previous?: Observable<any>): Observable<any> {
-    const additional: any = {};
+  // private _eachPage(offset?: string, previous?: Observable<any>): RunAction {
+  //   // private _eachPage(offset?: string, previous?: Observable<any>): Observable<any> {
+  //   const additional: any = {};
 
-    if (!!offset) {
-      additional['offset'] = offset;
-    }
+  //   if (!!offset) {
+  //     additional['offset'] = offset;
+  //   }
 
-    return defer(
-      () => new RunAction({
-        base: this._table.base,
-        method: 'GET',
-        path: this._table.urlEncodedNameOrId,
-        params: normalizeQueryParams(this._params, additional),
-        headers: new HttpHeaders({authorization: `Bearer ${this._table.base.airtable.options.apiKey}`})
-      })
-        .perform()
-        .pipe(
-          flatMap((result: any) => {
-            const items$ = !!previous
-              ? merge(previous, of(result.records))
-              : of(result.records);
-            const next$ = !!result.offset
-              ? this._eachPage(result.offset, of(result.records))
-              : EMPTY;
+  //   // return defer(
+  //   //   () => new RunAction({
+  //   return new RunAction({
+  //     base: null,
+  //     // base: this._table.base,
+  //     method: 'GET',
+  //     path: this._table.urlEncodedNameOrId,
+  //     params: normalizeQueryParams(this._params, additional),
+  //   })
+  //     // .perform()
+  //     .pipe(
+  //       flatMap((result: any) => {
+  //         const items$ = !!previous
+  //           ? merge(previous, of(result.records))
+  //           : of(result.records);
+  //         const next$ = !!result.offset
+  //           ? this._eachPage(result.offset, of(result.records))
+  //           : EMPTY;
 
-            return merge(items$, next$);
-          })
-        )
-    );
-  }
+  //         return merge(items$, next$);
+  //       })
+  //     );
+  //   // );
+  // }
 
-  private _all(offset?: string, previous?: any[]): Observable<any> {
-    const additional: any = {};
+  // private _all(offset?: string, previous?: any[]): Observable<any> {
+  //   const additional: any = {};
 
-    if (!!offset) {
-      additional['offset'] = offset;
-    }
+  //   if (!!offset) {
+  //     additional['offset'] = offset;
+  //   }
 
-    return defer(
-      () => new RunAction({
-        base: this._table.base,
-        method: 'GET',
-        path: this._table.urlEncodedNameOrId,
-        params: normalizeQueryParams(this._params, additional),
-        headers: new HttpHeaders({authorization: `Bearer ${this._table.base.airtable.options.apiKey}`})
-      })
-        .perform()
-        .pipe(
-          flatMap((result: any) => {
-            const items$ = !!previous
-              ? concat(of(previous), result.records)
-              : of(result.records);
-            const next$ = !!result.offset
-              ? this._all(result.offset, result.records)
-              : EMPTY;
+  //   return defer(
+  //     () => new RunAction({
+  //       base: null,
+  //       // base: this._table.base,
+  //       method: 'GET',
+  //       path: this._table.urlEncodedNameOrId,
+  //       params: normalizeQueryParams(this._params, additional)
+  //     })
+  //       .perform()
+  //       .pipe(
+  //         flatMap((result: any) => {
+  //           const items$ = !!previous
+  //             ? concat(of(previous), result.records)
+  //             : of(result.records);
+  //           const next$ = !!result.offset
+  //             ? this._all(result.offset, result.records)
+  //             : EMPTY;
 
-            return merge(items$, next$);
-          })
-        )
-    );
-  }
+  //           return merge(items$, next$);
+  //         })
+  //       )
+  //   );
+  // }
 }

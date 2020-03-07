@@ -1,11 +1,8 @@
-/**
- * Created by bohoffi on 01.06.2017.
- */
 import {Observable} from 'rxjs';
 
 import {Link, SelectParams} from '../interfaces';
 import {LinkedQuery} from './LinkedQuery';
-import {_extendLinked} from './utils';
+// import {_extendLinked} from './utils';
 import {Table} from '../node-port/table';
 import {map} from 'rxjs/operators';
 
@@ -16,14 +13,14 @@ export class LinkedTable extends Table {
   }
 
   constructor(private origin: Table, private links: Link[]) {
-    super(origin.options, origin.base);
+    super(origin.options);
   }
 
-  find(id: string): Observable<any> {
-    return super.find(id).pipe(
-      map((record: any) => _extendLinked(record, this.links, this.origin.base))
-    );
-  }
+  // find(id: string): Observable<any> {
+  //   return super.find(id).pipe(
+  //     map((record: any) => _extendLinked(record, this.links))
+  //   );
+  // }
 
   select(params?: SelectParams): LinkedQuery {
     if (!params) {

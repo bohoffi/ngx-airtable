@@ -1,23 +1,21 @@
-/**
- * Created by bohoffi on 02.06.2017.
- */
 import {share} from 'rxjs/operators';
 
 import {Link} from '../interfaces';
-import {Base} from '../node-port/base';
+import { Table } from '../node-port/table';
 
-export const _extendLinked = (record: any, links: Link[], base: Base): any => {
-  links.forEach((link: Link) => {
-    record[link.linkSelector] = base
-      .table(link.target)
-      .select({
-        filterByFormula: link.linkFilter(record)
-      })
-      .all()
-      .pipe(
-        share()
-      );
-  });
+// export const _extendLinked = (record: any, links: Link[]): any => {
+//   links.forEach((link: Link) => {
+//     record[link.linkSelector] = new Table(link.target)
+//     // record[link.linkSelector] = base
+//     //   .table(link.target)
+//       .select({
+//         filterByFormula: link.linkFilter(record)
+//       })
+//       .all()
+//       .pipe(
+//         share()
+//       );
+//   });
 
-  return record;
-};
+//   return record;
+// };
