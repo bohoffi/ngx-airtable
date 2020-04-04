@@ -52,11 +52,6 @@ export class Airtable {
     return airtableObs;
   }
 
-  // base(baseId: string): Base {
-  //   this._checkConfiguration();
-  //   return new Base(baseId);
-  // }
-
   // execute(action: RunAction): Observable<any> {
 
   //   const headers = {
@@ -94,11 +89,4 @@ export class Airtable {
       throw new Error('API key is required to connect to Airtable');
     }
   }
-
-  // private _mapApiResponse(event: HttpEvent<any>) {
-  //   if (event.type === HttpEventType.Response) {
-  //     return event.body;
-  //   }
-  //   return null;
-  // }
 }
