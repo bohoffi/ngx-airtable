@@ -7,7 +7,7 @@ import { Executioner } from '../interfaces/executioner';
  */
 export function find(id: string): OperatorFunction<Executioner, Executioner> {
     return function findOperation(source: Observable<Executioner>): Observable<Executioner> {
-        return source.pipe(map((exec: Executioner) => {
+        return source.pipe(map<Executioner, Executioner>((exec: Executioner) => {
             return {
                 ...exec,
                 ...{
