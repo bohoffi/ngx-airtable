@@ -1,9 +1,9 @@
 import { map } from 'rxjs/operators';
 
-import { SelectParams } from '../interfaces';
+import { SelectParams } from '../interfaces/select-params';
 import { RunAction } from './runaction';
 import { Table } from './table';
-import { normalizeQueryParams } from './utils';
+import { normalizeQueryParams } from '../utils/normalize-query-params';
 
 export class Query {
 

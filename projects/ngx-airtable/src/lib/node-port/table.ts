@@ -1,4 +1,4 @@
-import { TableOptions } from '../interfaces';
+import { TableOptions } from '../interfaces/table-options';
 
 export class Table {
 

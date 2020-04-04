@@ -1,11 +1,12 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { RunActionOptions, SelectParams } from '../interfaces';
+import { RunActionOptions } from '../interfaces';
 import { RunActionMethod } from '../types';
 import { Base } from './base';
 import { Table } from './table';
-import { normalizeQueryParams } from './utils';
+import { normalizeQueryParams } from '../utils/normalize-query-params';
 import { OperatorFunction } from 'rxjs';
+import { SelectParams } from '../interfaces/select-params';
 
 export class RunAction {
 

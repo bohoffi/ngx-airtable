@@ -1,7 +1,7 @@
 import { SelectParams } from '../interfaces/select-params';
 import { OperatorFunction, Observable, Operator, Subscriber, TeardownLogic } from 'rxjs';
 import { Executioner } from '../interfaces/executioner';
-import { normalizeQueryParams } from '../node-port/utils';
+import { normalizeQueryParams } from '../utils/normalize-query-params';
 
 class SelectSubscriber extends Subscriber<Executioner> {
 
