@@ -31,7 +31,7 @@
       true,
       140
     ],
-    "member-access": false,
+    "member-access": true,
     "member-ordering": [
       true,
       {
@@ -43,6 +43,26 @@
         ]
       }
     ],
+    "completed-docs": [
+      true,
+      {
+        "methods": {
+          "locations": "instance",
+          "privacies": [
+            "public",
+            "protected"
+          ]
+        },
+        "properties": {
+          "locations": "instance",
+          "privacies": [
+            "public",
+            "protected"
+          ]
+        }
+      }
+    ],
+    "prefer-readonly": true,
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
