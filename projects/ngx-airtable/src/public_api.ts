@@ -21,10 +21,14 @@ export * from './lib/interfaces/table-options';
 
 // operators
 export * from './lib/operators/base';
+export * from './lib/operators/create';
+export * from './lib/operators/destroy';
 export * from './lib/operators/execute';
 export * from './lib/operators/find';
 export * from './lib/operators/first-page';
+export * from './lib/operators/replace';
 export * from './lib/operators/select';
+export * from './lib/operators/update';
 export * from './lib/operators/table';
 
 // services
