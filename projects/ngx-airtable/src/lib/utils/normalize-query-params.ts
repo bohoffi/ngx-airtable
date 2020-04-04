@@ -40,6 +40,7 @@ export const normalizeQueryParams = (params?: SelectParams, additional?: Params)
     }
 
     if (!!additional) {
+        // TODO check array params
         Object.keys(additional).forEach((key: string) => {
             normalizedParams[key] = additional[key];
         });
