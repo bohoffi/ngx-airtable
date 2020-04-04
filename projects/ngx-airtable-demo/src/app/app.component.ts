@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
-import { Table, Airtable, Base, RunAction, firstPage } from 'ngx-airtable';
+import { Airtable, table, select, execute, firstPage } from 'ngx-airtable';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,39 +9,24 @@ import { Table, Airtable, Base, RunAction, firstPage } from 'ngx-airtable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  bugs: Observable<any>;
-  members: Observable<any>;
-  features: Observable<any>;
   // bugsWithFeatures: Observable<any>;
-
-  private base: Base;
-
-  private _bugIssueTable: Table;
-  private _teamMemberTable: Table;
-  private _featureTable: Table;
   // private _linkedTable: LinkedTable;
 
-  constructor(private _airtable: Airtable) {
-    this._initAirtable();
+  private base: Observable<any>;
+  public bugs: Observable<any>;
+  public members: Observable<any>;
+  public features: Observable<any>;
+
+  constructor(private readonly airtable: Airtable) {
+    this.initAirtable();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._fetchData();
   }
 
-  private _initAirtable(): void {
-    this.base = this._airtable
-      .base('app7rAIjII1EISWEN');
+  private initAirtable(): void {
 
-    this._bugIssueTable = this.base.table({
-      tableId: 'Bugs%20%26%20Issues'
-    });
-    this._teamMemberTable = this.base.table({
-      tableId: 'Team%20Members'
-    });
-    this._featureTable = this.base.table({
-      tableId: 'Features'
-    });
     // this._linkedTable = LinkedTable.fromTable(
     //   this._bugIssueTable,
     //   [
@@ -52,33 +37,50 @@ export class AppComponent implements OnInit {
     //     }
     //   ]
     // );
+
+    this.base = this.airtable.build('app7rAIjII1EISWEN');
   }
 
   private _fetchData(): void {
-    this.bugs = this._airtable.execute(
-      RunAction.get(this.base, this._bugIssueTable, {
-        maxRecords: 10
-      })
-    ).pipe(
-      firstPage(),
-      share()
-    );
-    this.members = this._airtable.execute(
-      RunAction.get(this.base, this._teamMemberTable, {
-        maxRecords: 10
-      })
-    ).pipe(
-      firstPage(),
-      share()
-    );
-    this.features = this._airtable.execute(
-      RunAction.get(this.base, this._featureTable, {
-        maxRecords: 10
-      })
-    ).pipe(
-      firstPage(),
-      share()
-    );
+
+    this.bugs = this.base
+      .pipe(
+        table({
+          tableId: 'Bugs%20%26%20Issues'
+        }),
+        select({
+          maxRecords: 10
+        }),
+        execute(),
+        tap((response: any) => console.log({ response: response })),
+        firstPage()
+      );
+
+    this.members = this.base
+      .pipe(
+        table({
+          tableId: 'Team%20Members'
+        }),
+        select({
+          maxRecords: 10
+        }),
+        execute(),
+        tap((response: any) => console.log({ response: response })),
+        firstPage()
+      );
+
+    this.features = this.base
+      .pipe(
+        table({
+          tableId: 'Features'
+        }),
+        select({
+          maxRecords: 10
+        }),
+        execute(),
+        tap((response: any) => console.log({ response: response })),
+        firstPage()
+      );
 
     // this.bugsWithFeatures = this._linkedTable
     //   .select({maxRecords: 10})
