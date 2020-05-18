@@ -18,7 +18,8 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-airtable/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ngx-airtable/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -53,6 +54,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ngx-airtable-demo",
             "index": "projects/ngx-airtable-demo/src/index.html",
             "main": "projects/ngx-airtable-demo/src/main.ts",
@@ -69,6 +71,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "projects/ngx-airtable-demo/src/environments/environment.ts",
