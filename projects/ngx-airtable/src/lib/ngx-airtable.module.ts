@@ -5,7 +5,6 @@ import {AirtableConfiguration} from './interfaces/airtable-configuration';
 import {NGX_AIRTABLE_CONFIG} from './token/ngx-airtable-configuration';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 })
 export class NgxAirtableModule {
-  static forRoot(config?: AirtableConfiguration): ModuleWithProviders<NgxAirtableModule> {
+  public static forRoot(config?: AirtableConfiguration): ModuleWithProviders<NgxAirtableModule> {
     return {
       ngModule: NgxAirtableModule,
       providers: [
