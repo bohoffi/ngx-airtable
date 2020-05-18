@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Airtable, table, select, execute, firstPage } from 'ngx-airtable';
+import { Airtable, table, select, execute, firstPage, Executioner } from 'ngx-airtable';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   // bugsWithFeatures: Observable<any>;
   // private _linkedTable: LinkedTable;
 
-  private base: Observable<any>;
+  private base: Observable<Executioner>;
   public bugs: Observable<any>;
   public members: Observable<any>;
   public features: Observable<any>;
@@ -32,7 +32,8 @@ export class AppComponent implements OnInit {
     //   [
     //     {
     //       target: this._featureTable.options,
-    //       linkFilter: (record: any) => `OR(${record['fields']['Associated Features'].map((af: any) => `RECORD_ID()='${af}'`).join(',')})`,
+    //       linkFilter: (record: any) =>
+    //        `OR(${record['fields']['Associated Features'].map((af: any) => `RECORD_ID()='${af}'`).join(',')})`,
     //       linkSelector: 'features'
     //     }
     //   ]
