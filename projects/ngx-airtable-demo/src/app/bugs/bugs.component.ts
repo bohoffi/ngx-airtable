@@ -7,5 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class BugsComponent {
   @Input()
-  bugs: any[];
+  public bugs: any[];
 }

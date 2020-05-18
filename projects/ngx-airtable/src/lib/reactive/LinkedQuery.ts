@@ -1,10 +1,11 @@
-import {Observable} from 'rxjs';
-import {Link, SelectParams} from '../interfaces';
+import { Observable } from 'rxjs';
+import { Link } from '../interfaces';
 // import {_extendLinked} from './utils';
-import {Query} from '../node-port/query';
-import {Table} from '../node-port/table';
-import {map} from 'rxjs/operators';
+import { Query } from '../node-port/query';
+import { Table } from '../node-port/table';
+import { map } from 'rxjs/operators';
 import { RunAction } from '../node-port/runaction';
+import { SelectParams } from '../interfaces/select-params';
 
 export class LinkedQuery extends Query {
 
