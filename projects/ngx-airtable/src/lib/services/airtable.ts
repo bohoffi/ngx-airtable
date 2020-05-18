@@ -52,38 +52,6 @@ export class Airtable {
     return airtableObs;
   }
 
-  // execute(action: RunAction): Observable<any> {
-
-  //   const headers = {
-  //     ...{
-  //       authorization: `Bearer ${this.config.apiKey}`
-  //     }, ...action.headers
-  //   };
-
-  //   const request: HttpRequest<any> = new HttpRequest<any>(action.method,
-  //     `${this.config.endpointUrl}/v${this.config.apiVersion}/${action.base.baseId}/${action.path}`,
-  //     action.body,
-  //     {
-  //       headers: new HttpHeaders(headers),
-  //       params: action.params
-  //     });
-
-  //   const requestResult = this.http.request(request)
-  //     .pipe(
-  //       map(event => this._mapApiResponse(event)),
-  //       last() // return last (completed) message to caller,
-  //     );
-
-  //   (action.pipes || []).forEach((pipe: OperatorFunction<any, any>) => requestResult.pipe(pipe));
-
-  //   return requestResult;
-  //   // return this.http.request(request)
-  //   //   .pipe(
-  //   //     map(event => this._mapApiResponse(event)),
-  //   //     last() // return last (completed) message to caller,
-  //   //   );
-  // }
-
   private checkConfiguration(): void {
     if (!this.config.apiKey) {
       throw new Error('API key is required to connect to Airtable');
