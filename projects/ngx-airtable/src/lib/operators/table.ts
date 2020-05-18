@@ -9,7 +9,7 @@ function urlEncodedNameOrId(tableOptions: TableOptions): string {
 }
 
 export function table(tableOptions: TableOptions): OperatorFunction<Executioner, Executioner> {
-    return function findOperator(source: Observable<Executioner>): Observable<Executioner> {
+    return function tableOperator(source: Observable<Executioner>): Observable<Executioner> {
 
         if (!tableOptions.tableName && !tableOptions.tableId) {
             throw new Error('Table name or table ID is required');
