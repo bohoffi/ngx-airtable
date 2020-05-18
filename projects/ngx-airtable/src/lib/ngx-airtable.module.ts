@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 })
 export class NgxAirtableModule {
-  static forRoot(config?: AirtableConfiguration): ModuleWithProviders {
+  static forRoot(config?: AirtableConfiguration): ModuleWithProviders<NgxAirtableModule> {
     return {
       ngModule: NgxAirtableModule,
       providers: [
