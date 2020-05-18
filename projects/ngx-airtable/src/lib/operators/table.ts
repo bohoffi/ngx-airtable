@@ -13,13 +13,17 @@ export function table(tableOptions: TableOptions): OperatorFunction<Executioner,
 
         if (!tableOptions.tableName && !tableOptions.tableId) {
             throw new Error('Table name or table ID is required');
-          }
+        }
+
+        if (table) {
+            throw new Error('You already defined a table');
+        }
 
         return source.pipe(map<Executioner, Executioner>((exec: Executioner) => {
             return {
                 ...exec,
                 ...{
-                    url: `${exec.url}/${urlEncodedNameOrId(tableOptions)}`
+                    table: `${exec.url}/${urlEncodedNameOrId(tableOptions)}`
                 }
             };
         }));

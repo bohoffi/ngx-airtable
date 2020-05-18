@@ -8,7 +8,7 @@ export function execute(): OperatorFunction<Executioner, any> {
         return source.pipe(
             switchMap((exec: Executioner) => {
                 const request: HttpRequest<any> = new HttpRequest<any>(exec.method,
-                    exec.url,
+                    `${exec.url}/${exec.base}/${exec.table}`,
                     exec.body,
                     {
                         headers: exec.headers,

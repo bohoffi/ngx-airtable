@@ -8,11 +8,16 @@ import { Executioner } from '../interfaces/executioner';
 export function find(id: string): OperatorFunction<Executioner, Executioner> {
     return function findOperation(source: Observable<Executioner>): Observable<Executioner> {
         return source.pipe(map<Executioner, Executioner>((exec: Executioner) => {
+
+            if (!exec.table) {
+                throw new Error('You need to define a table first');
+            }
+
             return {
                 ...exec,
                 ...{
                     method: 'GET',
-                    url: `${exec.url}/${id}`
+                    table: `${exec.table}/${id}`
                 }
             };
         }));
