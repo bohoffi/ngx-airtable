@@ -8,6 +8,7 @@ export * from './lib/ngx-airtable.module';
 // NEW API
 // interfaces
 export * from './lib/interfaces/airtable-configuration';
+export * from './lib/interfaces/executioner';
 export * from './lib/interfaces/params';
 export * from './lib/interfaces/select-params';
 export * from './lib/interfaces/sort-param';
