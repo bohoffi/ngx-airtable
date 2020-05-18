@@ -10,20 +10,20 @@ function urlEncodedNameOrId(tableOptions: TableOptions): string {
 
 export function table(tableOptions: TableOptions): OperatorFunction<Executioner, Executioner> {
     return function tableOperator(source: Observable<Executioner>): Observable<Executioner> {
-
-        if (!tableOptions.tableName && !tableOptions.tableId) {
-            throw new Error('Table name or table ID is required');
-        }
-
-        if (table) {
-            throw new Error('You already defined a table');
-        }
-
         return source.pipe(map<Executioner, Executioner>((exec: Executioner) => {
+
+            if (!tableOptions.tableName && !tableOptions.tableId) {
+                throw new Error('Table name or table ID is required');
+            }
+
+            if (exec.table) {
+                throw new Error('You already defined a table');
+            }
+
             return {
                 ...exec,
                 ...{
-                    table: `${exec.url}/${urlEncodedNameOrId(tableOptions)}`
+                    table: `${urlEncodedNameOrId(tableOptions)}`
                 }
             };
         }));
