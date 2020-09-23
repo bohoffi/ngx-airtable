@@ -2,12 +2,7 @@
   <a href="https://airtable.com/tbluwzjRrbTC6iewu/viwaIoUUTnziSGHxE" target="_blank">Features</a>
 </h3>
 <pre>
-  <code>
-    <span class="keyword">this</span>.<span class="var">features</span> = <span class="keyword">this</span>.<span class="var">_featureTable</span>
-      .<span class="method">select</span>(&#123;<span class="var">maxRecords</span>: 10&#125;)
-      .<span class="method">firstPage</span>()
-      .<span class="var">share</span>();
-  </code>
+  <code class="ts" [innerHTML]="code"></code>
 </pre>
 <ul>
   <ng-container *ngFor="let feature of features">

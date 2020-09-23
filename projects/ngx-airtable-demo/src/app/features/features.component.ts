@@ -7,5 +7,20 @@ import {Component, Input} from '@angular/core';
 })
 export class FeaturesComponent {
   @Input()
-  features: any[];
+  public features: any[];
+
+  public readonly code = 
+  `
+  this.features = this.base
+      .pipe(
+        table({
+          tableId: 'Features'
+        }),
+        select({
+          maxRecords: 10
+        }),
+        execute(),
+        firstPage()
+      );
+  `;
 }

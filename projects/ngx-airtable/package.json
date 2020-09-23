@@ -1,7 +1,7 @@
 {
   "name": "ngx-airtable",
   "description": "An Angular module wrapping the Airtable API",
-  "version": "2.1.0",
+  "version": "3.0.0-0",
   "homepage": "https://github.com/bohoffi/ngx-airtable",
   "author": {
     "name": "bohoffi",
@@ -25,7 +25,7 @@
     "url": "https://github.com/bohoffi/ngx-airtable/issues"
   },
   "peerDependencies": {
-    "@angular/common": ">=6.0.0",
-    "@angular/core": ">=6.0.0"
+    "@angular/common": ">=8.0.0",
+    "@angular/core": ">=8.0.0"
   }
 }

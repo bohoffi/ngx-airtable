@@ -8,41 +8,13 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card>
-  <pre>
-  <code>
-    <span class="keyword">constructor</span>(<span class="keyword">private</span> _airtable: Airtable) &#123;
-      <span class="keyword">const</span> base: Base = <span class="keyword">this</span>._airtable
-      .<span class="method">base</span>(<span class="string">'app7rAIjII1EISWEN'</span>);
-
-      <span class="keyword">this</span>.<span class="var">_bugIssueTable</span> = base.<span class="method">table</span>(&#123;
-        <span class="var">tableId</span>: <span class="string">'Bugs%20%26%20Issues'</span>
-      &#125;);
-      <span class="keyword">this</span>.<span class="var">_teamMemberTable</span> = base.<span
-    class="method">table</span>(&#123;
-        <span class="var">tableId</span>: <span class="string">'Team%20Members'</span>
-      &#125;);
-      <span class="keyword">this</span>.<span class="var">_featureTable</span> = base.<span class="method">table</span>(&#123;
-        <span class="var">tableId</span>: <span class="string">'Features'</span>
-      &#125;);
-      <span class="keyword">this</span>.<span class="var">_linkedTable</span> = LinkedTable.<span
-    class="method">fromTable</span>(
-        <span class="keyword">this</span>.<span class="var">_bugIssueTable</span>,
-        [
-          &#123;
-            <span class="var">target</span>: <span class="keyword">this</span>.<span
-    class="var">_featureTable</span>.<span class="var">options</span>,
-            <span class="method">linkFilter</span>: record => <span class="string">`OR(</span>$&#123;record[<span
-    class="string">'fields'</span>][<span class="string">'Associated Features'</span>].map(af => <span class="string">`RECORD_ID()='</span>$&#123;af&#125;<span
-    class="string">'`</span>).join(<span class="string">','</span>)&#125;)<span class="string">`</span>,
-            <span class="var">linkSelector</span>: <span class="string">'features'</span>
-          &#125;
-        ]
-      );
-    &#125;
-  </code>
+<pre>
+  <code class="ts" [innerHTML]="module"></code>
 </pre>
-</mat-card>
+
+<pre>
+  <code class="ts" [innerHTML]="component"></code>
+</pre>
 
 <div id="app-container">
   <app-bugs [bugs]="bugs | async"></app-bugs>

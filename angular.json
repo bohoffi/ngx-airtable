@@ -17,9 +17,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-airtable/ng-package.prod.json"
-            ,              "tsConfig": "projects/ngx-airtable/tsconfig.lib.prod.json"
-}
+              "project": "projects/ngx-airtable/ng-package.prod.json",
+              "tsConfig": "projects/ngx-airtable/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -65,7 +65,7 @@
               "projects/ngx-airtable-demo/src/assets"
             ],
             "styles": [
-              "projects/ngx-airtable-demo/src/styles.css"
+              "projects/ngx-airtable-demo/src/styles.scss"
             ],
             "scripts": []
           },

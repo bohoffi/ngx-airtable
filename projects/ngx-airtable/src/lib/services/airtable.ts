@@ -27,6 +27,11 @@ export class Airtable {
     this.checkConfiguration();
   }
 
+  /**
+   * Creates a new Airtable executioner with optional set base and table.
+   * @param baseId base id to bind to the executioner
+   * @param tableOptions table to bind to the executioner
+   */
   public build(baseId?: string, tableOptions?: TableOptions): Observable<Executioner> {
 
     const headers = {
