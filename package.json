@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
     "highlight.js": "^10.1.2",
-    "rxjs": "~6.5.4",
+    "rxjs": "~6.6.3",
     "tslib": "^2.0.1",
     "zone.js": "~0.10.2"
   },
