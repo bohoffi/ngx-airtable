@@ -1,0 +1,11 @@
+<button mat-button [matMenuTriggerFor]="versionPicker" aria-label="Select a version"
+        matTooltip="Select a version of the documentation">
+  {{currentVersion.title}}
+  <mat-icon>arrow_drop_down</mat-icon>
+</button>
+<mat-menu #versionPicker="matMenu">
+  <button mat-menu-item *ngFor="let version of versions"
+          (click)="onVersionChanged(version)">
+    {{version.title}}
+  </button>
+</mat-menu>
