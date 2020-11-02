@@ -1,0 +1,21 @@
+<h3>
+  Bug with 'Associated Features'
+</h3>
+<ul>
+  <li *ngFor="let bug of bugsWithFeatures">
+    <p>BUG: {{bug?.fields.Name}}</p>
+    <ul>
+      <li *ngFor="let feature of (bug?.features | async)">
+        FEATURE: {{feature?.fields.Feature}}
+      </li>
+    </ul>
+  </li>
+</ul>
+<pre>
+  <code>
+    <span class="keyword">this</span>.<span class="var">bugsWithFeatures</span> = <span class="keyword">this</span>.<span class="var">_linkedBugToFeaturesTable</span>
+      .<span class="method">select</span>(&#123;<span class="var">maxRecords</span>: 10&#125;)
+      .<span class="method">firstPage</span>()
+      .<span class="var">share</span>();
+  </code>
+</pre>
