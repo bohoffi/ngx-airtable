@@ -1,6 +1,10 @@
 # ngx-airtable
 [![npm version](https://badge.fury.io/js/ngx-airtable.svg)](https://badge.fury.io/js/ngx-airtable)
 
+# ngx-airtable 3 (beta)
+
+### FOR 2.0.x PLEASE GO TO [THE 2.0.x BRANCH](https://github.com/bohoffi/ngx-airtable/tree/2.0.x)
+
 An Angular module wrapping the Airtable API
 
 Feel free to take a look at the [DEMO](https://bohoffi.github.io/ngx-airtable/).
