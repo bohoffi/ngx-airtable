@@ -65,9 +65,14 @@
               "projects/ngx-airtable-demo/src/assets"
             ],
             "styles": [
-              "projects/ngx-airtable-demo/src/styles.scss"
+              "projects/ngx-airtable-demo/src/styles.scss",
+              "node_modules/prismjs/themes/prism-tomorrow.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.min.js"
+            ]
           },
           "configurations": {
             "production": {
