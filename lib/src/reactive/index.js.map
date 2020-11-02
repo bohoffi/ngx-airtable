@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.ts"],"names":[],"mappings":"AAAA;;GAEG;AAEH,OAAO,EAAC,WAAW,EAAC,MAAM,eAAe,CAAC;AAC1C,OAAO,EAAC,WAAW,EAAC,MAAM,eAAe,CAAC","file":"index.js","sourceRoot":"","sourcesContent":["/**\r\n * Created by bohoffi on 02.06.2017.\r\n */\r\n\r\nexport {LinkedTable} from './LinkedTable';\r\nexport {LinkedQuery} from './LinkedQuery';\r\n"]}
