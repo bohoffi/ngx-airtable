@@ -1,24 +1,9 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
+  <mat-toolbar-row fxLayout="row">
     <span>ngx-airtable</span>
-  </mat-toolbar-row>
-  <mat-toolbar-row>
-    Data shown from <a href="https://airtable.com/tblCxXgAZjnxjlyBP" target="_blank">
-      https://airtable.com/tblCxXgAZjnxjlyBP</a>
+    <span fxFlex></span>
+    <app-version-picker></app-version-picker>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<pre>
-  <code class="ts" [innerHTML]="module"></code>
-</pre>
-
-<pre>
-  <code class="ts" [innerHTML]="component"></code>
-</pre>
-
-<div id="app-container">
-  <app-bugs [bugs]="bugs | async"></app-bugs>
-  <app-members [members]="members | async"></app-members>
-  <app-features [features]="features | async"></app-features>
-  <!-- <app-linked-table [bugsWithFeatures]="bugsWithFeatures | async"></app-linked-table> -->
-</div>
+<router-outlet></router-outlet>
