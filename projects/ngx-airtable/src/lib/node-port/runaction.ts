@@ -1,8 +1,9 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 import { RunActionOptions } from '../interfaces';
 
@@ -57,6 +58,10 @@ export class RunAction {
         )
         break;
     }
-    return this._http.request<any>(request);
+    return this._http.request<any>(request)
+      .pipe(
+        filter((httpEvent: HttpEvent<any>) => httpEvent.type === HttpEventType.Response),
+        map((response: HttpResponse<any>) => response.body)
+      );
   }
 }
