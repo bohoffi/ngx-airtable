@@ -17,8 +17,7 @@
     ],
     "paths": {
       "ngx-airtable": [
-        "dist/ngx-airtable/ngx-airtable",
-        "dist/ngx-airtable"
+        "projects/ngx-airtable/src/public-api.ts"
       ]
     }
   }
