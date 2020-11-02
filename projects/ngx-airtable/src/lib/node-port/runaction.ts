@@ -42,7 +42,7 @@ export class RunAction {
             params: this._options.params,
             responseType: 'json'
           }
-        )
+        );
         break;
       case 'POST':
       case 'PUT':
@@ -55,7 +55,7 @@ export class RunAction {
             params: this._options.params,
             responseType: 'json'
           }
-        )
+        );
         break;
     }
     return this._http.request<any>(request)

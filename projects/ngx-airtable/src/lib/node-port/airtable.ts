@@ -2,10 +2,11 @@
  * Created by bohoffi on 30.05.2017.
  */
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { Base } from './base';
 import { AirtableConfiguration } from '../interfaces';
+import { AirtableConfigToken } from '../tokens';
 
 const defaultOptions: Partial<AirtableConfiguration> = {
   endpointUrl: 'https://api.airtable.com',
@@ -21,9 +22,9 @@ export class Airtable {
 
   constructor(
     public readonly http: HttpClient,
-    _config?: AirtableConfiguration
+    @Inject(AirtableConfigToken) private readonly config?: AirtableConfiguration
   ) {
-    this._options = Object.assign(defaultOptions, _config);
+    this._options = Object.assign(defaultOptions, this.config);
   }
 
   configure(opts: AirtableConfiguration): Airtable {

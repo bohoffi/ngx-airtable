@@ -27,8 +27,6 @@ export class Table {
 
   /**
    * Returns the record defined by the given id.
-   * @param id
-   * @returns {Observable<any>}
    */
   find(id: string): Observable<any> {
     return new Record(id, this).fetch();
@@ -36,8 +34,6 @@ export class Table {
 
   /**
    * Creates a new Query instance with the given parameters.
-   * @param params
-   * @returns {Query}
    */
   select(params?: SelectParams): Query {
     if (!params) {
@@ -49,8 +45,6 @@ export class Table {
 
   /**
    * Creates a new record with the given data.
-   * @param entityData
-   * @returns {Observable<any>}
    */
   create(entityData: any): Observable<any> {
     return new RunAction({
@@ -69,9 +63,6 @@ export class Table {
 
   /**
    * Updates a record defined by the given id with the given data.
-   * @param id
-   * @param entityData
-   * @returns {Observable<any>}
    */
   update(id: string, entityData: any): Observable<any> {
     return new Record(id, this).patchUpdate(entityData);
@@ -79,8 +70,6 @@ export class Table {
 
   /**
    * Deletes a record defined by the given id.
-   * @param id
-   * @returns {Observable<any>}
    */
   destroy(id: string): Observable<any> {
     return new Record(id, this).destroy();
@@ -88,9 +77,6 @@ export class Table {
 
   /**
    * Replaces a record defined by the given id with the given data.
-   * @param id
-   * @param entityData
-   * @returns {Observable<any>}
    */
   replace(id: string, entityData: any): Observable<any> {
     return new Record(id, this).putUpdate(entityData);

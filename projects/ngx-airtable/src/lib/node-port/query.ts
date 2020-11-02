@@ -51,7 +51,7 @@ export class Query {
     };
 
     if (!!offset) {
-      additional['offset'] = offset;
+      additional.offset = offset;
     }
 
     return defer(
@@ -85,7 +85,7 @@ export class Query {
     };
 
     if (!!offset) {
-      additional['offset'] = offset;
+      additional.offset = offset;
     }
 
     return defer(

@@ -1,14 +1,7 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import { HttpClient } from '@angular/common/http';
-
-import { Airtable } from './airtable';
-import { AirtableConfiguration, Params, SelectParams, SortParam } from '../interfaces';
-
-export function _airtableFactory(http: HttpClient, config?: AirtableConfiguration): Airtable {
-  return new Airtable(http, config);
-}
+import { Params, SelectParams, SortParam } from '../interfaces';
 
 export const normalizeQueryParams = (params: SelectParams, additional?: Params): Params => {
 
