@@ -1,12 +1,13 @@
 {
   "name": "ngx-airtable",
-  "version": "2.0.1",
+  "version": "2.0.1-next.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:lib": "ng build ngx-airtable --prod"
   },
   "private": true,
   "dependencies": {
