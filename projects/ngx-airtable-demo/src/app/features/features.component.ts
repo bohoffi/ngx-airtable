@@ -8,19 +8,4 @@ import {Component, Input} from '@angular/core';
 export class FeaturesComponent {
   @Input()
   public features: any[];
-
-  public readonly code = 
-  `
-  this.features = this.base
-      .pipe(
-        table({
-          tableId: 'Features'
-        }),
-        select({
-          maxRecords: 10
-        }),
-        execute(),
-        firstPage()
-      );
-  `;
 }

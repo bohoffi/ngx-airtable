@@ -17,67 +17,6 @@ export class AppComponent implements OnInit {
   public members: Observable<any>;
   public features: Observable<any>;
 
-  public readonly module = 
-  `
-  import { NgModule } from '@angular/core';
-  
-  import { NgxAirtableModule } from 'ngx-airtable';
-
-  import { AppComponent } from './app.component';
-
-  @NgModule({
-    declarations: [
-      AppComponent
-    ],
-    imports: [
-      NgxAirtableModule.forRoot({
-        apiKey: 'key9k9HOerYrQQgTc'
-      })
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
-  })
-  export class AppModule {}
-  `;
-
-  public readonly component = 
-  `
-  import { Component, OnInit } from '@angular/core';
-  import { Observable } from 'rxjs';
-  import { Airtable, table, select, execute, firstPage, Executioner } from 'ngx-airtable';
-
-  @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
-  })
-  export class AppComponent implements OnInit {
-
-    private base: Observable<Executioner>;
-    public bugs: Observable<any>;
-    public members: Observable<any>;
-    public features: Observable<any>;
-
-    constructor(private readonly airtable: Airtable) {
-      this.initAirtable();
-    }
-
-    public ngOnInit(): void {
-      this._fetchData();
-    }
-
-    private initAirtable(): void {
-
-      this.base = this.airtable.build('app7rAIjII1EISWEN');
-    }
-
-    private _fetchData(): void {
-
-      // see below
-    }
-  }
-  `;
-
   constructor(private readonly airtable: Airtable) {
     this.initAirtable();
   }
@@ -100,7 +39,7 @@ export class AppComponent implements OnInit {
     //   ]
     // );
 
-    this.base = this.airtable.build('app7rAIjII1EISWEN');
+    this.base = this.airtable.build('appDF1y0se11zccJ6');
   }
 
   private _fetchData(): void {
@@ -108,7 +47,7 @@ export class AppComponent implements OnInit {
     this.bugs = this.base
       .pipe(
         table({
-          tableId: 'Bugs%20%26%20Issues'
+          tableId: 'tbl8Lo6hJPnUaFOG8'
         }),
         select({
           maxRecords: 10
@@ -121,7 +60,7 @@ export class AppComponent implements OnInit {
     this.members = this.base
       .pipe(
         table({
-          tableId: 'Team%20Members'
+          tableId: 'tblvj7fCjLAS8QifP'
         }),
         select({
           maxRecords: 10
@@ -134,7 +73,7 @@ export class AppComponent implements OnInit {
     this.features = this.base
       .pipe(
         table({
-          tableId: 'Features'
+          tableId: 'tbl0K09ybHTZXCuBN'
         }),
         select({
           maxRecords: 10
