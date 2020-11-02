@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.lt-md="column" class="stretch-content">
+    <markdown [src]="'assets/module.md'"></markdown>
+
+    <markdown [src]="'assets/component.md'"></markdown>
+</div>
+
+<router-outlet></router-outlet>
+
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-around stretch">
+    <app-bugs fxFlex="30%" [bugs]="bugs | async"></app-bugs>
+    <app-members fxFlex="30%" [members]="members | async"></app-members>
+    <app-features fxFlex="30%" [features]="features | async"></app-features>
+    <!-- <app-linked-table [bugsWithFeatures]="bugsWithFeatures | async"></app-linked-table> -->
+</div>
