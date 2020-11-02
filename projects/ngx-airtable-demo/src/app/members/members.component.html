@@ -1,9 +1,9 @@
 <h3>
-  <a href="https://airtable.com/tblZ5GpVzfAvhw2aw/viwDVfYylfvyj70Q7" target="_blank">Team Members</a>
+  <a href="https://airtable.com/tblvj7fCjLAS8QifP/viw99GOf5LvVargVq" target="_blank">Team Members</a>
 </h3>
-<pre>
-  <code class="ts" [innerHTML]="code"></code>
-</pre>
+<markdown [src]="'assets/members-code.md'"></markdown>
+
+<markdown [src]="'assets/members-template.md'"></markdown>
 <ul>
   <ng-container *ngFor="let member of members">
     <li>{{member.fields.Name}}</li>

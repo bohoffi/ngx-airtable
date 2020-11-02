@@ -1,9 +1,9 @@
 <h3>
-  <a href="https://airtable.com/tbluwzjRrbTC6iewu/viwaIoUUTnziSGHxE" target="_blank">Features</a>
+  <a href="https://airtable.com/tbl8Lo6hJPnUaFOG8/viwFHCVhsTWlecdfU" target="_blank">Features</a>
 </h3>
-<pre>
-  <code class="ts" [innerHTML]="code"></code>
-</pre>
+<markdown [src]="'assets/features-code.md'"></markdown>
+
+<markdown [src]="'assets/features-template.md'"></markdown>
 <ul>
   <ng-container *ngFor="let feature of features">
     <li>{{feature.fields.Feature}}</li>
