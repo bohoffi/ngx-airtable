@@ -3,3 +3,5 @@
  */
 
 export type SortDirection = 'asc' | 'desc';
+
+export type RequestMethod = 'DELETE' | 'GET' | 'HEAD' | 'JSONP' | 'OPTIONS' | 'POST' | 'PUT' | 'PATCH';

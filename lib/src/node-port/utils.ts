@@ -1,12 +1,11 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {Http} from '@angular/http';
+import { Airtable } from './airtable';
+import { AirtableConfiguration, Params, SelectParams, SortParam } from '../interfaces';
+import { HttpClient } from '@angular/common/http';
 
-import {Airtable} from './airtable';
-import {AirtableConfiguration, Params, SelectParams, SortParam} from '../interfaces';
-
-export function _airtableFactory(http: Http, config?: AirtableConfiguration): Airtable {
+export function _airtableFactory(http: HttpClient, config?: AirtableConfiguration): Airtable {
   return new Airtable(http, config);
 }
 

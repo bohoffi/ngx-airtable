@@ -1,14 +1,13 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {RequestMethod} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-
-import {Base} from './base';
-import {SelectParams, TableOptions} from '../interfaces';
-import {Record} from './record';
-import {RunAction} from './runaction';
-import {Query} from './query';
+import { Base } from './base';
+import { SelectParams, TableOptions } from '../interfaces';
+import { Record } from './record';
+import { RunAction } from './runaction';
+import { Query } from './query';
+import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 export class Table {
 
@@ -55,11 +54,13 @@ export class Table {
   create(entityData: any): Observable<any> {
     return new RunAction({
       base: this.base,
-      method: RequestMethod.Post,
+      method: 'POST',
       path: this.urlEncodedNameOrId,
-      params: {
-        api_key: this.base.airtable.options.apiKey
-      },
+      params: new HttpParams({
+        fromObject: {
+          api_key: this.base.airtable.options.apiKey
+        }
+      }),
       body: entityData
     })
       .perform();

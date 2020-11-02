@@ -1,21 +1,20 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-import {InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {Http} from '@angular/http';
-
-import {AirtableConfiguration, SelectParams, Link} from './interfaces';
-import {_airtableFactory, Airtable, Base, Query, Table} from './node-port/index';
-import {LinkedTable, LinkedQuery} from './reactive/index';
-import {SortDirection} from './types';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { AirtableConfiguration, SelectParams, Link } from './interfaces';
+import { _airtableFactory, Airtable, Base, Query, Table } from './node-port/index';
+import { LinkedTable, LinkedQuery } from './reactive/index';
+import { SortDirection } from './types';
 
 const AirtableConfigToken: InjectionToken<AirtableConfiguration> = new InjectionToken<AirtableConfiguration>('globalConfiguration');
 
 export const AirtableProvider = {
   provide: Airtable,
   useFactory: _airtableFactory,
-  deps: [Http, AirtableConfigToken]
+  deps: [HttpClient, AirtableConfigToken]
 };
 
 @NgModule({
@@ -26,7 +25,7 @@ export const AirtableProvider = {
 })
 export class NgxAirtableModule {
 
-  static forRoot(config?: AirtableConfiguration): ModuleWithProviders {
+  static forRoot(config?: AirtableConfiguration): ModuleWithProviders<NgxAirtableModule> {
     return {
       ngModule: NgxAirtableModule,
       providers: [
@@ -45,6 +44,6 @@ export class NgxAirtableModule {
   }
 }
 
-export {Airtable, Base, Table, Query, SelectParams, SortDirection};
-export {LinkedTable, LinkedQuery, Link};
+export { Airtable, Base, Table, Query, SelectParams, SortDirection };
+export { LinkedTable, LinkedQuery, Link };
 

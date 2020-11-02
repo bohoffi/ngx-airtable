@@ -1,18 +1,14 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {RequestMethod} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/defer';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/merge';
+import { HttpParams } from '@angular/common/http';
+import { defer, EMPTY, merge, Observable, of } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 
-import {SelectParams} from '../interfaces';
-import {RunAction} from './runaction';
-import {Table} from './table';
-import {normalizeQueryParams} from './utils';
+import { SelectParams } from '../interfaces';
+import { RunAction } from './runaction';
+import { Table } from './table';
+import { normalizeQueryParams } from './utils';
 
 export class Query {
 
@@ -27,14 +23,18 @@ export class Query {
   firstPage(): Observable<any> {
     return new RunAction({
       base: this._table.base,
-      method: RequestMethod.Get,
+      method: 'GET',
       path: this._table.urlEncodedNameOrId,
-      params: normalizeQueryParams(this._params, {
-        api_key: this._table.base.airtable.options.apiKey
+      params: new HttpParams({
+        fromObject: normalizeQueryParams(this._params, {
+          api_key: this._table.base.airtable.options.apiKey
+        })
       })
     })
       .perform()
-      .map(result => result.records);
+      .pipe(
+        map(result => result.records)
+      );
   }
 
   eachPage(): Observable<any> {
@@ -54,24 +54,28 @@ export class Query {
       additional['offset'] = offset;
     }
 
-    return Observable.defer(
+    return defer(
       () => new RunAction({
         base: this._table.base,
-        method: RequestMethod.Get,
+        method: 'GET',
         path: this._table.urlEncodedNameOrId,
-        params: normalizeQueryParams(this._params, additional)
+        params: new HttpParams({
+          fromObject: normalizeQueryParams(this._params, additional)
+        })
       })
         .perform()
-        .flatMap((result: any) => {
-          const items$ = !!previous
-            ? previous.merge(Observable.of(result.records))
-            : Observable.of(result.records);
-          const next$ = !!result.offset
-            ? this._eachPage(result.offset, Observable.of(result.records))
-            : Observable.empty();
+        .pipe(
+          mergeMap((result: any) => {
+            const items$ = !!previous
+              ? merge(previous, of(result.records))
+              : of(result.records);
+            const next$ = !!result.offset
+              ? this._eachPage(result.offset, of(result.records))
+              : EMPTY;
 
-          return items$.merge(next$);
-        })
+            return merge(items$, next$);
+          })
+        )
     );
   }
 
@@ -84,24 +88,28 @@ export class Query {
       additional['offset'] = offset;
     }
 
-    return Observable.defer(
+    return defer(
       () => new RunAction({
         base: this._table.base,
-        method: RequestMethod.Get,
+        method: 'GET',
         path: this._table.urlEncodedNameOrId,
-        params: normalizeQueryParams(this._params, additional)
+        params: new HttpParams({
+          fromObject: normalizeQueryParams(this._params, additional)
+        })
       })
         .perform()
-        .flatMap((result: any) => {
-          const items$ = !!previous
-            ? Observable.of(previous.concat(result.records))
-            : Observable.of(result.records);
-          const next$ = !!result.offset
-            ? this._all(result.offset, result.records)
-            : Observable.empty();
+        .pipe(
+          mergeMap((result: any) => {
+            const items$ = !!previous
+              ? of(previous.concat(result.records))
+              : of(result.records);
+            const next$ = !!result.offset
+              ? this._all(result.offset, result.records)
+              : EMPTY;
 
-          return items$.merge(next$);
-        })
+            return merge(items$, next$);
+          })
+        )
     );
   }
 }

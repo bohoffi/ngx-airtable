@@ -1,11 +1,10 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {RequestMethod} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-
-import {RunAction} from './runaction';
-import {Table} from './table';
+import { HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RunAction } from './runaction';
+import { Table } from './table';
 
 export class Record {
 
@@ -20,22 +19,26 @@ export class Record {
   fetch(): Observable<any> {
     return new RunAction({
       base: this._table.base,
-      method: RequestMethod.Get,
+      method: 'GET',
       path: `${this._table.urlEncodedNameOrId}/${this._id}`,
-      params: {
-        api_key: this._table.base.airtable.options.apiKey
-      }
+      params: new HttpParams({
+        fromObject: {
+          api_key: this._table.base.airtable.options.apiKey
+        }
+      })
     }).perform();
   }
 
   patchUpdate(entityData: any): Observable<any> {
     return new RunAction({
       base: this._table.base,
-      method: RequestMethod.Patch,
+      method: 'PATCH',
       path: `${this._table.urlEncodedNameOrId}/${this._id}`,
-      params: {
-        api_key: this._table.base.airtable.options.apiKey
-      },
+      params: new HttpParams({
+        fromObject: {
+          api_key: this._table.base.airtable.options.apiKey
+        }
+      }),
       body: entityData
     })
       .perform();
@@ -44,11 +47,13 @@ export class Record {
   putUpdate(entityData: any): Observable<any> {
     return new RunAction({
       base: this._table.base,
-      method: RequestMethod.Put,
+      method: 'PUT',
       path: `${this._table.urlEncodedNameOrId}/${this._id}`,
-      params: {
-        api_key: this._table.base.airtable.options.apiKey
-      },
+      params: new HttpParams({
+        fromObject: {
+          api_key: this._table.base.airtable.options.apiKey
+        }
+      }),
       body: entityData
     })
       .perform();
@@ -57,11 +62,13 @@ export class Record {
   destroy(): Observable<any> {
     return new RunAction({
       base: this._table.base,
-      method: RequestMethod.Delete,
+      method: 'DELETE',
       path: `${this._table.urlEncodedNameOrId}/${this._id}`,
-      params: {
-        api_key: this._table.base.airtable.options.apiKey
-      }
+      params: new HttpParams({
+        fromObject: {
+          api_key: this._table.base.airtable.options.apiKey
+        }
+      })
     })
       .perform();
   }

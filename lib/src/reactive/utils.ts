@@ -1,10 +1,10 @@
 /**
  * Created by bohoffi on 02.06.2017.
  */
-import 'rxjs/add/operator/share';
 
-import {Link} from '../interfaces';
-import {Base} from '../node-port/base';
+import { share } from 'rxjs/operators';
+import { Link } from '../interfaces';
+import { Base } from '../node-port/base';
 
 export const _extendLinked = (record: any, links: Link[], base: Base): any => {
   links.forEach((link: Link) => {
@@ -14,7 +14,9 @@ export const _extendLinked = (record: any, links: Link[], base: Base): any => {
         filterByFormula: link.linkFilter(record)
       })
       .all()
-      .share();
+      .pipe(
+        share()
+      );
   });
 
   return record;

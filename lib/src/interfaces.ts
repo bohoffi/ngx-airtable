@@ -1,13 +1,12 @@
 /**
  * Created by bohoffi on 29.05.2017.
  */
-import {RequestMethod} from '@angular/http';
-
-import {Base} from './node-port/base';
-import {SortDirection} from './types';
+import { HttpParams } from '@angular/common/http';
+import { Base } from './node-port/base';
+import { RequestMethod, SortDirection } from './types';
 
 export interface AirtableConfiguration {
-  apiKey?: string;
+  apiKey: string;
   endpointUrl?: string;
   apiVersion?: number;
 }
@@ -21,9 +20,7 @@ export interface RunActionOptions {
   base: Base;
   method: RequestMethod;
   path: string;
-  params?: string | URLSearchParams | {
-    [key: string]: any | any[];
-  } | null;
+  params?: HttpParams;
   body?: any;
 }
 

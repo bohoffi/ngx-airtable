@@ -1,9 +1,9 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {Airtable} from './airtable';
-import {TableOptions} from '../interfaces';
-import {Table} from './table';
+import { Airtable } from './airtable';
+import { TableOptions } from '../interfaces';
+import { Table } from './table';
 
 export class Base {
 

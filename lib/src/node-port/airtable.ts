@@ -1,24 +1,25 @@
 /**
  * Created by bohoffi on 30.05.2017.
  */
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-
-import {Base} from './base';
-import {AirtableConfiguration} from '../interfaces';
+import { Base } from './base';
+import { AirtableConfiguration } from '../interfaces';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 const defaultOptions: AirtableConfiguration = {
   endpointUrl: 'https://api.airtable.com',
   apiVersion: 0
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Airtable {
 
   private _options: AirtableConfiguration;
 
-  constructor(public http: Http,
-              _config?: AirtableConfiguration) {
+  constructor(public http: HttpClient,
+    _config?: AirtableConfiguration) {
     this._options = Object.assign(defaultOptions, _config);
   }
 

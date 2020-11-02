@@ -1,13 +1,12 @@
 /**
  * Created by bohoffi on 01.06.2017.
  */
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/filter';
-
-import {Table} from '../node-port/index';
-import {Link, SelectParams} from '../interfaces';
-import {LinkedQuery} from './LinkedQuery';
-import {_extendLinked} from './utils';
+import { Table } from '../node-port/index';
+import { Link, SelectParams } from '../interfaces';
+import { LinkedQuery } from './LinkedQuery';
+import { _extendLinked } from './utils';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class LinkedTable extends Table {
 
@@ -21,7 +20,9 @@ export class LinkedTable extends Table {
 
   find(id: string): Observable<any> {
     return super.find(id)
-      .map((record: any) => _extendLinked(record, this.links, this.origin.base));
+      .pipe(
+        map((record: any) => _extendLinked(record, this.links, this.origin.base))
+      );
   }
 
   select(params?: SelectParams): LinkedQuery {
