@@ -36,7 +36,7 @@ import { NgxAirtableModule } from 'ngx-airtable';
 
 @NgModule({
   imports: [
-  HttpClientModule,
+    HttpClientModule,
     NgxAirtableModule.forRoot()
   ],
   bootstrap: [AppComponent]
