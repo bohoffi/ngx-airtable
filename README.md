@@ -28,13 +28,15 @@ yarn add ngx-airtable
 ```
 
 ## Usage
-#### Import `NgxAirtableModule`
+#### Import `NgxAirtableModule` and `HttpClientModule`
 ```ts
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgxAirtableModule } from 'ngx-airtable';
 
 @NgModule({
   imports: [
+  HttpClientModule,
     NgxAirtableModule.forRoot()
   ],
   bootstrap: [AppComponent]
